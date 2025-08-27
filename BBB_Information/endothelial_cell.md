@@ -19,4 +19,8 @@
 <ins>Tight Junctions</ins>: Primarily made of occludins and claudin, responsible for attaching neighboring endothelial cells together.
 
 <ins>Function</ins>: Regulates the entering and exiting of substances and molecules by disabling the ability for molecules to enter the brain through gaps between adjacent endothelial cells 
- 
+
+### Adheren Junctions 
+<ins>Adheren Junctions</ins>: Cell junction made up of proteins that links adjacent endothelial cells  
+
+<ins>Function</ins>: Supports tight junctions in disabling the ability for molecules to enter the brain through gaps between adjacent endothelial cells. 
