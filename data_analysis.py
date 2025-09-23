@@ -12,6 +12,8 @@ invalid_molecule = []
 molecular_weights = []
 logPs = []
 TPSAs = []
+BBB_permeable = []
+BBB_nonpermeable = []
 
 '''Find Number of SMILES Duplicate'''
 data_table = pd.concat([LightBBB[['SMILES','BBclass']], MoleculeNet[['SMILES','BBclass']], DeePred[['SMILES','BBclass']], 
@@ -39,23 +41,15 @@ unique_SMILES_table['Molecular Weight (amu)'] = molecular_weights # Add molecula
 '''Find logP value and remove invalid SMILES'''
 for smiles in unique_SMILES_table['SMILES']:
     molecule = Chem.MolFromSmiles(smiles) # Convert SMILES to molecular name 
-    if molecule: 
-        logP = Crippen.MolLogP(molecule) # Find the logP value for each SMILES 
-        logPs.append(logP) 
-    else: 
-        invalid_molecule.append(smiles)
-unique_SMILES_table = unique_SMILES_table[~unique_SMILES_table['SMILES'].isin(invalid_molecule)] # Keep all SMILES that are valid 
+    logP = Crippen.MolLogP(molecule) # Find the logP value for each SMILES 
+    logPs.append(logP) 
 unique_SMILES_table['LogP Value'] = logPs # Add logP value to the Data Table
 
 '''Find TPSA value and remove invalid SMILES'''
 for smiles in unique_SMILES_table['SMILES']:
     molecule = Chem.MolFromSmiles(smiles) # Convert SMILES to molecular name 
-    if molecule: 
-        TPSA = rdMolDescriptors.CalcTPSA(molecule) # Find the TPSA value for each SMILES 
-        TPSAs.append(TPSA) 
-    else: 
-        invalid_molecule.append(smiles)
-unique_SMILES_table = unique_SMILES_table[~unique_SMILES_table['SMILES'].isin(invalid_molecule)] # Keep all SMILES that are valid 
+    TPSA = rdMolDescriptors.CalcTPSA(molecule) # Find the TPSA value for each SMILES 
+    TPSAs.append(TPSA) 
 unique_SMILES_table['TPSA Value'] = TPSAs # Add TPSA value to the Data Table
 
 '''Find # of BBB permeable and nonpermeable Drugs'''
@@ -66,6 +60,20 @@ for value in unique_SMILES_table['BBclass']:
         BBB_nonpermeable_number = BBB_nonpermeable_number + 1
 print(BBB_permeable_number) # 8791 BBB+ molecules
 print(BBB_nonpermeable_number) # 3258 BBB- molecules
+
+'''Distribute SMILES into separate tables based on BBB permeability'''
+BBB_permeable = unique_SMILES_table[unique_SMILES_table['BBclass'] == 1]['SMILES'].tolist()
+BBB_nonpermeable = unique_SMILES_table[unique_SMILES_table['BBclass'] == 0]['SMILES'].tolist()
+BBB_permeable_table = unique_SMILES_table[~unique_SMILES_table['SMILES'].isin(BBB_nonpermeable)] # Keep all BBB+ permeable molecules
+BBB_nonpermeable_table = unique_SMILES_table[~unique_SMILES_table['SMILES'].isin(BBB_permeable)] # Keep all BBB+ nonpermeable molecules
+
+'''Get TPSA Values for BBB+ and BBB- molecules individually'''
+tpsa_positive = BBB_permeable_table['TPSA Value']
+tpsa_negative = BBB_nonpermeable_table['TPSA Value']
+
+'''Get logP Values for BBB+ and BBB- molecules individually'''
+logP_positive = BBB_permeable_table['LogP Value']
+logP_negative = BBB_nonpermeable_table['LogP Value']
 
 '''Make a Histogram of Molecular Weights'''
 bins = np.arange(min(molecular_weights), max(molecular_weights) + 1, 50)
@@ -88,11 +96,30 @@ plt.show()
 '''Make a Histogram of the TPSA Value'''
 plt.hist(logPs, edgecolor ='black', align='mid', bins = 50)
 ax = plt.gca()
-ax.set_xlabel('TPSA Value')
+ax.set_xlabel('TPSA (angstrom)')
 ax.set_ylabel('Number of Molecules')
-ax.set_title("Number of Molecules in each TPSA Value Category", size=11.5, weight='bold') 
+ax.set_title("Number of Molecules in each TPSA (angstrom) Category", size=11.5, weight='bold') 
 plt.show()
 
+'''Make a Box Plot of the TPSA Value, BBB+ and BBB-'''
+fig, ax = plt.subplots(1, 2)
+ax[0].boxplot(tpsa_positive, vert = False, showfliers = False)
+ax[0].set_title("TPSA Distribution for BBB+ molecules", size=8, weight='bold')
+ax[0].set_xlabel("TPSA (angstrom)")
+ax[1].boxplot(tpsa_negative, vert = False, showfliers = False)
+ax[1].set_title("TPSA Distribution for BBB- molecules", size=8, weight='bold')
+ax[1].set_xlabel("TPSA (angstrom)")
+plt.show()
+
+'''Make a Box Plot of the logP Value, BBB+ and BBB-'''
+fig, ax = plt.subplots(1, 2)
+ax[0].boxplot(logP_positive, vert = False, showfliers = False)
+ax[0].set_title("logP Distribution for BBB+ molecules", size=8, weight='bold')
+ax[0].set_xlabel("logP")
+ax[1].boxplot(logP_negative, vert = False, showfliers = False)
+ax[1].set_title("logP Distribution for BBB- molecules", size=8, weight='bold')
+ax[1].set_xlabel("logP")
+plt.show()
 
 
 
