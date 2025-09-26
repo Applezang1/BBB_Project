@@ -14,6 +14,8 @@ logPs = []
 TPSAs = []
 BBB_permeable = []
 BBB_nonpermeable = []
+unique_multiple_BBB_compound = []
+invalid_multiple_BBB_compound = []
 
 '''Find Number of SMILES Duplicate'''
 data_table = pd.concat([LightBBB[['SMILES','BBclass']], MoleculeNet[['SMILES','BBclass']], DeePred[['SMILES','BBclass']], 
@@ -24,8 +26,18 @@ duplicates = SMILES_count[SMILES_count > 1] # 1463 duplicate SMILES
 '''Count the Number of Unique Compounds'''  
 unique_compounds = SMILES_count[SMILES_count < 2] # 10635 unique SMILES
 
-'''Make a Data Table with only unique SMILES'''
-unique_SMILES_table = data_table.drop_duplicates(subset = 'SMILES', keep = 'first') # 12049 unique SMILES in total
+'''Table of Duplicate Compounds and Reported BBclass Data'''
+duplicate_SMILES = duplicates.index.to_numpy() # Makes a numpy array of all the duplicate SMILES
+duplicate_SMILES_table = data_table[data_table['SMILES'].isin(duplicate_SMILES)] # Makes a table of every instance of duplicate SMILES 
+duplicate_SMILES_table = duplicate_SMILES_table.groupby('SMILES')['BBclass'].nunique() # Makes a table that shows the number of unique reported values
+
+'''Filtering Duplicates based on whether the reported values are consistent or not'''
+for i in range(len(duplicate_SMILES_table)):
+    if duplicate_SMILES_table.iloc[i] == 1: 
+        unique_multiple_BBB_compound.append(duplicate_SMILES_table.index[i])
+    else: 
+        invalid_multiple_BBB_compound.append(duplicate_SMILES_table.index[i])
+unique_SMILES_table = data_table[~data_table['SMILES'].isin(invalid_multiple_BBB_compound)]
 
 '''Find Molecular Weight and remove invalid SMILES'''
 for smiles in unique_SMILES_table['SMILES']:
@@ -58,8 +70,8 @@ for value in unique_SMILES_table['BBclass']:
         BBB_permeable_number = BBB_permeable_number + 1
     elif value == 0: 
         BBB_nonpermeable_number = BBB_nonpermeable_number + 1
-print(BBB_permeable_number) # 8791 BBB+ molecules
-print(BBB_nonpermeable_number) # 3258 BBB- molecules
+print(BBB_permeable_number) # 9589 BBB+ molecules
+print(BBB_nonpermeable_number) # 3601 BBB- molecules
 
 '''Distribute SMILES into separate tables based on BBB permeability'''
 BBB_permeable = unique_SMILES_table[unique_SMILES_table['BBclass'] == 1]['SMILES'].tolist()
@@ -104,23 +116,22 @@ plt.show()
 '''Make a Box Plot of the TPSA Value, BBB+ and BBB-'''
 fig, ax = plt.subplots(1, 2)
 ax[0].boxplot(tpsa_positive, vert = False, showfliers = False)
-ax[0].set_title("TPSA Distribution for BBB+ molecules", size=8, weight='bold')
+ax[0].set_title("TPSA Distribution for BBB+ molecules", size=11.5, weight='bold')
 ax[0].set_xlabel("TPSA (angstrom)")
 ax[1].boxplot(tpsa_negative, vert = False, showfliers = False)
-ax[1].set_title("TPSA Distribution for BBB- molecules", size=8, weight='bold')
+ax[1].set_title("TPSA Distribution for BBB- molecules", size=11.5, weight='bold')
 ax[1].set_xlabel("TPSA (angstrom)")
 plt.show()
 
 '''Make a Box Plot of the logP Value, BBB+ and BBB-'''
 fig, ax = plt.subplots(1, 2)
 ax[0].boxplot(logP_positive, vert = False, showfliers = False)
-ax[0].set_title("logP Distribution for BBB+ molecules", size=8, weight='bold')
+ax[0].set_title("logP Distribution for BBB+ molecules", size=11.5, weight='bold')
 ax[0].set_xlabel("logP")
 ax[1].boxplot(logP_negative, vert = False, showfliers = False)
-ax[1].set_title("logP Distribution for BBB- molecules", size=8, weight='bold')
+ax[1].set_title("logP Distribution for BBB- molecules", size=11.5, weight='bold')
 ax[1].set_xlabel("logP")
 plt.show()
-
 
 
 
