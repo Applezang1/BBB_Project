@@ -3,6 +3,7 @@ from data_table import LightBBB, MoleculeNet, DeePred, B3BD
 from rdkit import Chem
 from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
 import numpy as np, matplotlib.pyplot as plt 
+from scipy.stats import ttest_ind
 import pandas as pd 
 
 # Variables
@@ -86,6 +87,18 @@ tpsa_negative = BBB_nonpermeable_table['TPSA Value']
 '''Get logP Values for BBB+ and BBB- molecules individually'''
 logP_positive = BBB_permeable_table['LogP Value']
 logP_negative = BBB_nonpermeable_table['LogP Value']
+
+'''Find P-value between TPSA of BBB+ and BBB- molecules'''
+tpsa_positive_array = np.array(tpsa_positive)
+tpsa_negative_array = np.array(tpsa_negative)
+t_stat, p_value = ttest_ind(tpsa_positive_array, tpsa_negative_array)
+print(f'The P-value between TPSA of BBB+ and BBB- molecules is {p_value}')
+
+'''Find P-value between logP of BBB+ and BBB- molecules'''
+logP_positive_array = np.array(logP_positive)
+logP_negative_array = np.array(logP_negative)
+t_stat, p_value = ttest_ind(logP_positive_array, logP_negative_array)
+print(f'The P-value between logP of BBB+ and BBB- molecules is {p_value}')
 
 '''Make a Histogram of Molecular Weights'''
 bins = np.arange(min(molecular_weights), max(molecular_weights) + 1, 50)
