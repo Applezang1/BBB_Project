@@ -24,9 +24,10 @@
 
 <ins>IUPAC name</ins>: a readable representation of a certain chemical molecule intended to be used as the vocabulary for scientific works
 
-## Summary
-# Steps for Obtaining and Revising Data: 
-<ins>Reference Papers</ins>: Find articles and papers containing BBB permeability and/or logBB information for each molecular compound
+# Summary
+## Steps for Obtaining and Revising Data: 
+### Reference Papers
+Find articles and papers containing BBB permeability and/or logBB information for each molecular compound
 
 <ins>Extract Data from File</ins>:
 
