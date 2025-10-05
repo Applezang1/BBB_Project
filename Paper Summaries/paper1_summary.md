@@ -4,11 +4,11 @@
 
 ## Key Terminology for Contextual Understanding: 
 
-<ins>SMILES</ins>: representation of chemical structure as a line of text and symbols
+**<ins>SMILES</ins>**: representation of chemical structure as a line of text and symbols
 
-<ins>Pandas DataFrames</ins>: a 2-dimensional data structure where each column can hold different types of data (integer, string, float) 
+**<ins>Pandas DataFrames</ins>**: a 2-dimensional data structure where each column can hold different types of data (integer, string, float) 
 
-<ins>PubChem CID</ins>: a unique number that is associated with a unique chemical compound stored in the PubChem Compound Database 
+**<ins>PubChem CID</ins>**: a unique number that is associated with a unique chemical compound stored in the PubChem Compound Database 
 
 <ins>RdKit</ins>: an open-source cheminformatics library that allows you to find information related to molecules 
 
