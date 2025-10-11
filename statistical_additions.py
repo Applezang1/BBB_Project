@@ -1,4 +1,5 @@
 from data_analysis import *
+import statistics
 
 '''Find P-value between TPSA of BBB+ and BBB- molecules'''
 tpsa_positive_array = np.array(tpsa_positive)
@@ -11,6 +12,40 @@ logP_positive_array = np.array(logP_positive)
 logP_negative_array = np.array(logP_negative)
 t_stat, p_value = ttest_ind(logP_positive_array, logP_negative_array)
 print(f'The P-value between logP of BBB+ and BBB- molecules is {p_value:.10000f}')
+
+'''Find the Median of TPSA for BBB+ and BBB- molecules'''
+median_tpsa_positive = statistics.median(tpsa_positive_array)
+median_tpsa_negative = statistics.median(tpsa_negative_array)
+print(f'Median TPSA Positive: {median_tpsa_positive}')
+print(f'Median_TPSA_Negative: {median_tpsa_negative}')
+
+'''Find the Median of logP for BBB+ and BBB- molecules'''
+median_logP_positive = statistics.median(logP_positive_array)
+median_logP_negative = statistics.median(logP_negative_array)
+print(f'Median logP Positive: {median_logP_positive}')
+print(f'Median logP Negative: {median_logP_negative}') 
+
+'''Find the Interquartile Range of TPSA for BBB+ and BBB- molecules'''
+Q1_tpsa_positive = np.percentile(tpsa_positive_array, 25)
+Q3_tpsa_positive = np.percentile(tpsa_positive_array, 75)
+print(f"TPSA Positive Q1: {Q1_tpsa_positive}")
+print(f"TPSA Positive Q3: {Q3_tpsa_positive}")
+
+Q1_tpsa_negative = np.percentile(tpsa_negative_array, 25)
+Q3_tpsa_negative = np.percentile(tpsa_negative_array, 75)
+print(f"TPSA Negative Q1: {Q1_tpsa_negative}")
+print(f"TPSA Negative Q3: {Q3_tpsa_negative}")
+
+'''Find the Interquartile Range of logP for BBB+ and BBB- molecules'''
+Q1_logP_positive = np.percentile(logP_positive_array, 25)
+Q3_logP_positive = np.percentile(logP_positive_array, 75)
+print(f"logP Positive Q1: {Q1_logP_positive}")
+print(f"logP Positive Q3: {Q3_logP_positive}")
+
+Q1_logP_negative = np.percentile(logP_negative_array, 25)
+Q3_logP_negative = np.percentile(logP_negative_array, 75)
+print(f"logP Negative Q1: {Q1_logP_negative}")
+print(f"logP Negative Q3: {Q3_logP_negative}")
 
 '''Find Confidence Interval of TPSA difference of BBB+ and BBB- molecules'''
 n1 = len(tpsa_positive) # Size of the BBB+ dataset
