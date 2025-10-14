@@ -36,9 +36,9 @@
 
 **<ins>MLP(ECFP) (Multi-Layer Perceptron with ECFP)</ins>**: a type of model that uses ECFP (similar to RF[ECFP]) to predict a molecule’s properties
 
-<ins>RF(PCP) (Random Forest with Physiochemical Properties)</ins>: a type of model that takes physiochemical (physical + chemical) properties of a molecule as inputs to predict other properties of a molecule
+**<ins>RF(PCP) (Random Forest with Physiochemical Properties)</ins>**: a type of model that takes physiochemical (physical + chemical) properties of a molecule as inputs to predict other properties of a molecule
 
-<ins>MLP(PCP) (Multi-Layer Perceptron with PCP)</ins>: a type of model that uses PCP (similar to RF[PCP]) to predict other properties of a molecule 
+**<ins>MLP(PCP) (Multi-Layer Perceptron with PCP)</ins>**: a type of model that uses PCP (similar to RF[PCP]) to predict other properties of a molecule 
 
 <ins>Background</ins>: 
 
