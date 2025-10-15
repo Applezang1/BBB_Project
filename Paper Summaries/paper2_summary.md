@@ -40,7 +40,7 @@
 
 **<ins>MLP(PCP) (Multi-Layer Perceptron with PCP)</ins>**: a type of model that uses PCP (similar to RF[PCP]) to predict other properties of a molecule 
 
-<ins>Background</ins>: 
+## Background: 
 
 Determinants for BBB permeability include CNS activity, BBB+-, and logBB ratio. Multiple determinants are used as an attempt to enlarge the size and quality of the database. 
 
@@ -50,17 +50,18 @@ Determinants for BBB permeability include CNS activity, BBB+-, and logBB ratio. 
 
 GNN and Attentive FP were used as models to predict BBB permeability
 
-<ins>Method</ins>: 
+## Method: 
 
 MoleculeNet provides information about parameters such as BBB permeability. The BBBp dataset either has a BBB+/BBB- value or a logBB value. M-data (main data) is curated through MoleculeNet and processed.
 
-<ins>Cleaning Data and Defects</ins>: Remove data with the following features
+## Cleaning Data and Defects: 
+Remove data with the following features
 
     - SMILES can’t be identified in RDKit 
 
     - Duplicates 
 
-<ins>Data Curation</ins>: 
+## Data Curation: 
 
     - Remove salts and solvents 
 
@@ -68,33 +69,33 @@ MoleculeNet provides information about parameters such as BBB permeability. The 
 
     - If a SMILES contains multiple molecules, separate the compound and extract the molecule with the largest molecular weight (often the “main drug”/”parent drug”)
 
-<ins>Supplementary Data Set</ins>:
+## Supplementary Data Set:
 
 S-data (supplementary data) is a combination of external data containing BBB permeability values used to test the accuracy of the existing BBBp model.
 
     - Validity of Divergence between S-data and M-data: To ensure that the S-data is significantly/comparably different from the M-data, Tanimoto similarity and t-distributed stochastic neighbor embedding (t-SNE) are used.
 
-<ins>Models</ins>:
+## Models:
 
 GROVER and Attentive FP models were chosen to be trained for BBB permeability because they are pre-trained with existing data and use molecular fingerprints and molecular structure to make more accurate decisions about BBB permeability.
 
-<ins>Results</ins>: 
+## Results: 
 
 After testing with S-data, GROVER, and Attentive FP, on average, better performance for ROC_AUC, PRC_AUC, MCC, and BACC in comparison to other models: RF(ECFP), MLP(ECFP), RF(PCP), and MLP(PCP). 
 
-<ins>Attempt to Account for Active Transport</ins>:
+## Attempt to Account for Active Transport:
 
 Because models so far only predicted the passive transport of drugs using molecular data and not the active transport of drugs, information about the substrates of transporters was used as an attempt to train the molecules for active transport as well. However, GROVER had similar results with the other predictive models, showing the lack of capability for GROVER to successfully use the data to account for the active transport of drugs through the BBB 
  
-<ins>Limitations</ins>:
+## Limitations:
 
 The deviation of data (the provided data for models contained three times as many BBB+ molecules in comparison to BBB- molecules, when in reality, 98% of drugs can’t pass through the BBB), algorithms, and data quantity limited the accuracy of the model. 
 
-<ins>Uncertainty Estimations</ins>:
+## Uncertainty Estimations:
 
 As an attempt to account for the limitations, uncertainty estimations were used to predict the reliability of the prediction
 
-<ins>Algorithms for Uncertainty Estimation</ins>: 
+## Algorithms for Uncertainty Estimation: 
 
 Five proposed algorithms were used for uncertainty estimation of the result:
 
@@ -108,6 +109,8 @@ Five proposed algorithms were used for uncertainty estimation of the result:
 
     - LatentDist
 
-<ins>Results</ins>: An ensemble of Entropy and MC-dropout provided the best results for uncertainty estimation.
+## Results: 
+An ensemble of Entropy and MC-dropout provided the best results for uncertainty estimation.
 
-<ins>Result with Uncertainty Estimation</ins>: Combined with the algorithms for the uncertainty estimate, as well as the use of the MCC graph to calculate the prediction performance of the models, GROVER’s performance was ultimately enhanced. Finally, the GROVER-BBBp model was chosen as the ideal model and was tested with clinical and marketed drugs.
+## Result with Uncertainty Estimation: 
+Combined with the algorithms for the uncertainty estimate, as well as the use of the MCC graph to calculate the prediction performance of the models, GROVER’s performance was ultimately enhanced. Finally, the GROVER-BBBp model was chosen as the ideal model and was tested with clinical and marketed drugs.
