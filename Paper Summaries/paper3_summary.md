@@ -4,7 +4,7 @@
  
 ## Key Terminology for Contextual Understanding: 
 
-<ins>Lipinski Rule</ins>: a rule that states that for a drug to be effectively orally consumed, it needs to have the following properties 
+**<ins>Lipinski Rule</ins>**: a rule that states that for a drug to be effectively orally consumed, it needs to have the following properties 
 
     - Molecular weight: (<= 500 daltons) 
 
@@ -14,13 +14,13 @@
 
     - Hydrogen Bond Acceptors (HBA): (<= 10) 
 
-<ins>Generic Algorithm (GA)</ins>: an optimization algorithm that finds molecules with high BBB permeability by using their molecular properties, such as their logBB value or their structure
+**<ins>Generic Algorithm (GA)</ins>**: an optimization algorithm that finds molecules with high BBB permeability by using their molecular properties, such as their logBB value or their structure
 
-<ins>Random Forest Model (RF)</ins>: an algorithm where decisions are split up into multiple trees based on different initial parameters or subsets of data, and combined to determine BBB permeability
+**<ins>Random Forest Model (RF)</ins>**: an algorithm where decisions are split up into multiple trees based on different initial parameters or subsets of data, and combined to determine BBB permeability
 
-<ins>Support Vector Machine (SVM)</ins>: an algorithm that quantifies the parameters into vectors and graphs it on a hyperplane (a plane that is one dimension less than the space dimension) to find the distance between the vector and the hyperplane, which measures the uncertainty value
+**<ins>Support Vector Machine (SVM)</ins>**: an algorithm that quantifies the parameters into vectors and graphs it on a hyperplane (a plane that is one dimension less than the space dimension) to find the distance between the vector and the hyperplane, which measures the uncertainty value
 
-<ins>Artificial Neural Network (ANN)</ins>: an algorithm that learns the weights (example: molecular features) essential to BBB permeability through adjustment of its value and outputs its permeability based on these features.
+**<ins>Artificial Neural Network (ANN)</ins>**: an algorithm that learns the weights (example: molecular features) essential to BBB permeability through adjustment of its value and outputs its permeability based on these features.
 
 <ins>TP (true positive)</ins>: correct prediction of a BBB+ compound 
 
