@@ -22,19 +22,19 @@
 
 **<ins>Artificial Neural Network (ANN)</ins>**: an algorithm that learns the weights (example: molecular features) essential to BBB permeability through adjustment of its value and outputs its permeability based on these features.
 
-<ins>TP (true positive)</ins>: correct prediction of a BBB+ compound 
+**<ins>TP (true positive)</ins>**: correct prediction of a BBB+ compound 
 
-<ins>TN (true negative)</ins>: correct prediction of a BBB- compound
+**<ins>TN (true negative)</ins>**: correct prediction of a BBB- compound
 
-<ins>FP (false positive)</ins>: incorrect prediction of a BBB- compound as a BBB+
+**<ins>FP (false positive)</ins>**: incorrect prediction of a BBB- compound as a BBB+
 
-<ins>FT (false negative)</ins>: incorrect prediction of a BBB+ compound as a BBB- 
+**<ins>FT (false negative)</ins>**: incorrect prediction of a BBB+ compound as a BBB- 
 
-<ins>Gradient Boosting Decision Tree (GBDT)</ins>: a learning algorithm with an initial prediction where a sequence of multiple trees works to fix the previous errors of the prediction, which results in a more accurate prediction.
+**<ins>Gradient Boosting Decision Tree (GBDT)</ins>**: a learning algorithm with an initial prediction where a sequence of multiple trees works to fix the previous errors of the prediction, which results in a more accurate prediction.
 
-<ins>Exclusive Feature Bundling (EFB)</ins>: a technique where non-overlapping features are bundled into one value/feature, which decreases the overall number of features and time, increasing model efficiency.
+**<ins>Exclusive Feature Bundling (EFB)</ins>**: a technique where non-overlapping features are bundled into one value/feature, which decreases the overall number of features and time, increasing model efficiency.
 
-<ins>Gradient-based one-sided sampling (GOSS)</ins>: a technique where small errors (small gradients) and big errors (large gradients) are chosen as a way to train for accuracy with the large gradients and time with the small gradients.
+**<ins>Gradient-based one-sided sampling (GOSS)</ins>**: a technique where small errors (small gradients) and big errors (large gradients) are chosen as a way to train for accuracy with the large gradients and time with the small gradients.
 
 <ins>Background</ins>: 
 
