@@ -40,7 +40,7 @@
 
 **<ins>MLP(PCP) (Multi-Layer Perceptron with PCP)</ins>**: a type of model that uses PCP (similar to RF[PCP]) to predict other properties of a molecule 
 
-## Background: 
+### Background: 
 
 Determinants for BBB permeability include CNS activity, BBB+-, and logBB ratio. Multiple determinants are used as an attempt to enlarge the size and quality of the database. 
 
@@ -50,18 +50,18 @@ Determinants for BBB permeability include CNS activity, BBB+-, and logBB ratio. 
 
 GNN and Attentive FP were used as models to predict BBB permeability
 
-## Method: 
+### Method: 
 
 MoleculeNet provides information about parameters such as BBB permeability. The BBBp dataset either has a BBB+/BBB- value or a logBB value. M-data (main data) is curated through MoleculeNet and processed.
 
-## Cleaning Data and Defects: 
+### Cleaning Data and Defects: 
 Remove data with the following features
 
     - SMILES can’t be identified in RDKit 
 
     - Duplicates 
 
-## Data Curation: 
+### Data Curation: 
 
     - Remove salts and solvents 
 
@@ -69,33 +69,33 @@ Remove data with the following features
 
     - If a SMILES contains multiple molecules, separate the compound and extract the molecule with the largest molecular weight (often the “main drug”/”parent drug”)
 
-## Supplementary Data Set:
+### Supplementary Data Set:
 
 S-data (supplementary data) is a combination of external data containing BBB permeability values used to test the accuracy of the existing BBBp model.
 
     - Validity of Divergence between S-data and M-data: To ensure that the S-data is significantly/comparably different from the M-data, Tanimoto similarity and t-distributed stochastic neighbor embedding (t-SNE) are used.
 
-## Models:
+### Models:
 
 GROVER and Attentive FP models were chosen to be trained for BBB permeability because they are pre-trained with existing data and use molecular fingerprints and molecular structure to make more accurate decisions about BBB permeability.
 
-## Results: 
+### Results: 
 
 After testing with S-data, GROVER, and Attentive FP, on average, better performance for ROC_AUC, PRC_AUC, MCC, and BACC in comparison to other models: RF(ECFP), MLP(ECFP), RF(PCP), and MLP(PCP). 
 
-## Attempt to Account for Active Transport:
+### Attempt to Account for Active Transport:
 
 Because models so far only predicted the passive transport of drugs using molecular data and not the active transport of drugs, information about the substrates of transporters was used as an attempt to train the molecules for active transport as well. However, GROVER had similar results with the other predictive models, showing the lack of capability for GROVER to successfully use the data to account for the active transport of drugs through the BBB 
  
-## Limitations:
+### Limitations:
 
 The deviation of data (the provided data for models contained three times as many BBB+ molecules in comparison to BBB- molecules, when in reality, 98% of drugs can’t pass through the BBB), algorithms, and data quantity limited the accuracy of the model. 
 
-## Uncertainty Estimations:
+### Uncertainty Estimations:
 
 As an attempt to account for the limitations, uncertainty estimations were used to predict the reliability of the prediction
 
-## Algorithms for Uncertainty Estimation: 
+### Algorithms for Uncertainty Estimation: 
 
 Five proposed algorithms were used for uncertainty estimation of the result:
 
@@ -109,8 +109,8 @@ Five proposed algorithms were used for uncertainty estimation of the result:
 
     - LatentDist
 
-## Results: 
+### Results: 
 An ensemble of Entropy and MC-dropout provided the best results for uncertainty estimation.
 
-## Result with Uncertainty Estimation: 
+### Result with Uncertainty Estimation: 
 Combined with the algorithms for the uncertainty estimate, as well as the use of the MCC graph to calculate the prediction performance of the models, GROVER’s performance was ultimately enhanced. Finally, the GROVER-BBBp model was chosen as the ideal model and was tested with clinical and marketed drugs.
