@@ -1,4 +1,5 @@
 from data_analysis import * 
+import numpy as np, matplotlib.pyplot as plt 
 
 tpsa_values = [tpsa_positive, tpsa_negative]
 logP_values = [logP_positive, logP_negative]

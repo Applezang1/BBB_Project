@@ -2,10 +2,7 @@
 from data_table import LightBBB, MoleculeNet, DeePred, B3BD
 from rdkit import Chem
 from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
-import numpy as np, matplotlib.pyplot as plt 
 import pandas as pd 
-from scipy.stats import ttest_ind
-from scipy import stats
 
 # Variables
 BBB_permeable_number = 0

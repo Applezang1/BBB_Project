@@ -1,4 +1,7 @@
 from data_analysis import *
+from scipy.stats import ttest_ind
+import numpy as np, matplotlib.pyplot as plt 
+from scipy import stats
 import statistics
 
 '''Find P-value between TPSA of BBB+ and BBB- molecules'''
