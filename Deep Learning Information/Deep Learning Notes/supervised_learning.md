@@ -25,20 +25,20 @@
 
 ## Overview of Developing a Supervised Learning Model: 
 
-    - Input a training dataset of input and output pairs 
+1) Input a training dataset of input and output pairs 
     
-    - Define a scalar value (loss L) that quantifies the difference between the predicted output value from the mathematical model and the actual output value
+2) Define a scalar value (loss L) that quantifies the difference between the predicted output value from the mathematical model and the actual output value
 
-    - Minimize the loss functions by adjusting the parameters of the mathematical model. The loss function is a function in terms of a set of parameters
+3) Minimize the loss functions by adjusting the parameters of the mathematical model. The loss function is a function in terms of a set of parameters
 
 ## Example of Supervised Learning Model: 
 **<ins>1D Linear Regression Model</ins>**: a straight line equation that has one input (x) and one output (y). The 1D Linear Regression Model has two parameters: y-intercept and slope.
 
 ### Computing the Loss Function:
 
-    - Define a training error which is the deviation between the model’s prediction of the output value and the actual output value (this type of training error is called a least-squares loss) 
+- Define a training error which is the deviation between the model’s prediction of the output value and the actual output value (this type of training error is called a least-squares loss) 
 
-    - This creates the loss function, which is a function dependent on the parameters, with the most optimal parameters minimizing a loss function 
+- This creates the loss function, which is a function dependent on the parameters, with the most optimal parameters minimizing a loss function 
 
 ### Training the Model: 
 
@@ -52,6 +52,6 @@ A separate set of data (test data) can be used to calculate/determine the accura
 
 ### Two Possible Results from Testing: 
 
-    - Underfitting: the model is unable to perform well for both the test data and the training data. This concludes that the model is unable to capture the relationship between input and output values
+<ins>Underfitting</ins>: the model is unable to perform well for both the test data and the training data. This concludes that the model is unable to capture the relationship between input and output values
 
-    - Overfitting: the model performs well with the training data but not with the test data. This concludes that the model is overly complex and doesn’t generalize well (small changes to data causes a huge loss in accuracy)
+<ins>Overfitting</ins>: the model performs well with the training data but not with the test data. This concludes that the model is overly complex and doesn’t generalize well (small changes to data causes a huge loss in accuracy)

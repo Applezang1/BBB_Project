@@ -31,7 +31,7 @@
 
     - Length: constant or variable length  
 
-    - Note: Latent variables express input data in a simplified way by observing correlations or patterns between the data. Latent variables are useful because of their benefits, which require less input data and cause higher accuracy in predicted output
+<ins>Note</ins>: Latent variables express input data in a simplified way by observing correlations or patterns between the data. Latent variables are useful because of their benefits, which require less input data and cause higher accuracy in predicted output
 
 ## Types of Machine Learning Methods: 
 <ins>Types of Machine Learning Methods</ins>: supervised, unsupervised, reinforcement learning 
