@@ -11,22 +11,24 @@ A CNN is translation-equivariant, which means that any translation based transfo
 ### Computation of CNN 
 In convolutional neural networks, the output is predicted by taking the weighted sum of the previous, current, and subsequent input values.
 
-<ins>Problem</ins>: When CNN is at the first input or last input value, there is no previous or subsequent input value 
+#### Problem: 
 
-<ins>Solution</ins>: 
+When CNN is at the first input or last input value, there is no previous or subsequent input value 
 
-**<ins>Zero-padding</ins>** assumes that any input values that’s outside of the range takes the value of zero
+#### Solution: 
 
-**<ins>Valid Convolutions</ins>** discards any output values where there is no previous or subsequent input values to compute the output 
+- **<ins>Zero-padding</ins>** assumes that any input values that’s outside of the range takes the value of zero
+
+- **<ins>Valid Convolutions</ins>** discards any output values where there is no previous or subsequent input values to compute the output 
 
 ### Convolving the Input
 The equation for the weighted sum of input values to predict the output (convolutional kernel) can be changed through the following three parameters where: 
 
-    - Stride changes the movement of the current input values, where a stride of two means that the current input value jumps from x_1 to x_3
+- <ins>Stride</ins> changes the movement of the current input values, where a stride of two means that the current input value jumps from x_1 to x_3
 
-    - Size changes the amount of input values that contributes to the output, where a size of 5 means that 5 input values centered around the central input value are used to compute one output 
+- <ins>Size</ins> changes the amount of input values that contributes to the output, where a size of 5 means that 5 input values centered around the central input value are used to compute one output 
 
-    - Dilation changes the distance between the input values, where a dilation of 2 means that the input values are separated by a distance of 2. (so input value is used every other time) 
+- <ins>Dilation</ins> changes the distance between the input values, where a dilation of 2 means that the input values are separated by a distance of 2. (so input value is used every other time) 
 
 This methodology of computing the CNN is called **<ins>convolving the input</ins>**
 
@@ -46,20 +48,20 @@ Convolving the input and using it to create a convolutional layer. Each convolut
 ## Downsampling 
 Downsampling is an approach that scales down the spatial dimensions (length and width) of the feature maps (all the hidden units in each channel) of a convolutional network. For a 2x2 region in a feature map, this is done through: 
 
-**<ins>Max pooling</ins>**, which retains the maximum of the hidden units in the 2x2 feature map 
+- **<ins>Max pooling</ins>**, which retains the maximum of the hidden units in the 2x2 feature map 
 
-**<ins>Mean pooling</ins>**, which retains the average of the hidden units in the 2x2 feature map
+- **<ins>Mean pooling</ins>**, which retains the average of the hidden units in the 2x2 feature map
 
-**<ins>Subsampling</ins>**, which picks the hidden unit in a specific/certain location 
+- **<ins>Subsampling</ins>**, which picks the hidden unit in a specific/certain location 
 
 ## Upsampling 
 Upsampling is an approach that scales up the spatial dimensions (length and width) of the feature maps (all the hidden units in each channel) of a convolutional network. For a 2x2 region in a feature map, this is done through:  
 
-Duplicating all the hidden units  
+- Duplicating all the hidden units  
 
-Reversing the effects of max pooling  
+- Reversing the effects of max pooling  
 
-Duplicating the hidden units and filling up the intermediate spots by interpolating the values 
+- Duplicating the hidden units and filling up the intermediate spots by interpolating the values 
 
 **<ins>Transposed convolution</ins>**, where each input value contributes to the values of multiple hidden units and therefore increases the spatial dimensions of the feature maps 
 

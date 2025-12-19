@@ -1,9 +1,7 @@
 # Chapter 5: Loss Functions 
 
 ## Method for Creating Loss Functions 
-Note: A model computes the conditional probability distribution of a wide range of possible output values given an input value, and not a single output value  
-
-    - To determine a point estimate using a probability distribution, return the output value that has the highest distribution 
+<ins>Note</ins>: A model computes the conditional probability distribution of a wide range of possible output values given an input value, and not a single output value. To determine a point estimate using a probability distribution, return the output value that has the highest distribution 
 
 1) Therefore for any model, a parametric distribution with ranges that match the output domain must be chosen. This is known as the likelihood equation which computes the probability for a certain output given an input value. 
 
@@ -11,11 +9,11 @@ Note: A model computes the conditional probability distribution of a wide range 
 
 <ins>Assumptions</ins>: By using the maximum likelihood criterion, we are assuming that 
 
-    - The data is identically distributed (each data point is computed using the same probability function)
+- The data is identically distributed (each data point is computed using the same probability function)
 
-    - The data is independent (one data point doesn’t influence another) 
+- The data is independent (one data point doesn’t influence another) 
 
-    - Conclusion: This is why we’re able to multiply the probability distributions of different input values of the same parameter (same probability function) 
+- Conclusion: This is why we’re able to multiply the probability distributions of different input values of the same parameter (same probability function) 
 
 3) To simplify the maximum likelihood criterion and make calculations easier, take the logarithm of the maximum likelihood criterion (now called log-likelihood criterion) 
 
@@ -29,12 +27,12 @@ Note: A model computes the conditional probability distribution of a wide range 
 
 <ins>Model Output</ins>: The univariate normal distribution has two parameters (mean, variance). Define the model to predict the value of the mean and treat the variance as a constant. 
 
-    - Note: By treating the variance as a constant, we are assuming that the output increases relatively the same throughout all input values 
+- <ins>Note</ins>: By treating the variance as a constant, we are assuming that the output increases relatively the same throughout all input values 
 
 Using the univariate normal distribution and the model output, we are able to compute the negative log-likelihood and simplify it. This results in the least squares loss function
 
 ### Heteroscedastic Regression 
-The heteroscedastic regression uses the same format as the univariate regression but has two different models (one for the mean and another for the variance). This assumes that the variance isn’t constant, making it a suitable loss function for heteroscedastic (nonconstant variance) models
+The <ins>heteroscedastic regression</ins> uses the same format as the univariate regression but has two different models (one for the mean and another for the variance). This assumes that the variance isn’t constant, making it a suitable loss function for heteroscedastic (nonconstant variance) models
 
 ### Binary Classification 
 **<ins>Binary Classification</ins>**: an output of one of two discrete values (0, 1) 

@@ -11,31 +11,32 @@ In stochastic gradient descent/gradient descent, we need to be able to effective
 
 <ins>Two Requirements</ins>: Before computing the backpropagation algorithm, the following two requirements needs to be carried out 
 
-    - To determine how each parameter (bias, weight) influences the output of the hidden unit and the output of the neural network, we need to compute the forward pass 
+- To determine how each parameter (bias, weight) influences the output of the hidden unit and the output of the neural network, we need to compute the forward pass 
 
-    - To determine how changes to a weight or bias affects the output of the neural network model, we need to compute the backward pass
+- To determine how changes to a weight or bias affects the output of the neural network model, we need to compute the backward pass
 
-<ins>Example</ins>: 
+### Compute the Forward Pass 
 
 Compute the forward pass and store the equations and values of the pre activation and the activation/hidden unit output 
 
+### Compute the Backward Pass
 Compute the backward pass by: 
 
-    - Finding the derivative of the loss function in respect to the output value equation. 
+1. Finding the derivative of the loss function in respect to the output value equation. 
 
-    - Go backwards by finding the derivative of the loss function in respect to the activation function/hidden unit output, which was used in the output value equation. 
+2. Go backwards by finding the derivative of the loss function in respect to the activation function/hidden unit output, which was used in the output value equation. 
 
-        - This can be done using the chain rule and multiplying the derivative of the output value equation in respect to the activation/hidden unit output and multiplying that by the derivative of the loss function in respect to the output value equation.  
+    - This can be done using the chain rule and multiplying the derivative of the output value equation in respect to the activation/hidden unit output and multiplying that by the derivative of the loss function in respect to the output value equation.  
 
-    - Repeat the backward pass till you have found the derivative of the loss function in respect to all the pre activation and activation equations 
+3. Repeat the backward pass till you have found the derivative of the loss function in respect to all the pre activation and activation equations 
 
 Using the derivative of the loss function in respect to the pre-activation equations, compute the backward pass again by: 
 
-    - Finding the derivative of the loss function in respect to each of the parameters in the pre-activation equations. 
+1. Finding the derivative of the loss function in respect to each of the parameters in the pre-activation equations. 
 
-        - This can be computed using the chain rule and multiplying the derivative of the loss function in respect to the pre activation and multiplying that by the derivative of the pre activation in respect to the parameter 
+    - This can be computed using the chain rule and multiplying the derivative of the loss function in respect to the pre activation and multiplying that by the derivative of the pre activation in respect to the parameter 
 
-    - Repeat the backward pass till you have found the derivative of the loss function in respect to all the parameters 
+2. Repeat the backward pass till you have found the derivative of the loss function in respect to all the parameters 
 
 <ins>Note</ins>: This example can be to many-layered hidden networks, with the only difference being that the intermediate variables (pre-activation, activation) as well as the parameters (weights, biases) are vectors instead of a single variable 
 
@@ -44,12 +45,10 @@ Using the derivative of the loss function in respect to the pre-activation equat
 ## Parameter Initialization 
 Not choosing sensible parameters can cause the pre-activations to get infinitely small or infinitely big, causing either the vanishing gradient problem (computed gradients are too small) or the exploding gradient problem (computed gradients are too big) which are not ideal for training 
 
-Therefore, we need to ensure that the variance between the chosen parameters isn’t too big or too small in order to avoid the gradient problems, use the equation: 
+Therefore, we need to ensure that the variance between the chosen parameters isn’t too big or too small in order to avoid the gradient problems, use the following equation to compute the ideal variance between the chosen parameters: 
 
-    - variance^2 = 2/Dh (where Dh= dimensions of original layer)
-
-In order to compute the ideal variance between the chosen parameters 
+- Variance^2 = 2/Dh (where Dh= dimensions of original layer)
 
 If there are a different number of hidden units in each hidden layer, use the equation: 
 
-    - variance^2 = 4/(Dh + Dh’) (where Dh and Dh’ is the dimensions of the two layers)
+- Variance^2 = 4/(Dh + Dh’) (where Dh and Dh’ is the dimensions of the two layers)

@@ -22,9 +22,11 @@ Shallow neural networks can be composed so that the output of the first shallow 
 <ins>Definition</ins>: A deep neural network is a type of neural network with more than one hidden layer
 
 ### Deep Neural Network (2 hidden layers) 
-    - The output of the first network (y = phi0 + phi1*h1 + phi2*h2 + phi3*h3) is used as the input of the second layer.  
-    - Each constant or hidden unit (h1, h2, h3) is multiplied by a new set of arbitrary constants and is inputted into an activation function 
-    - The output of the activation function is the hidden units of the second layer, whose value depends on the hidden units of the first layer 
+- The output of the first network (y = phi0 + phi1*h1 + phi2*h2 + phi3*h3) is used as the input of the second layer.  
+
+- Each constant or hidden unit (h1, h2, h3) is multiplied by a new set of arbitrary constants and is inputted into an activation function 
+
+- The output of the activation function is the hidden units of the second layer, whose value depends on the hidden units of the first layer 
 
 ## Shallow vs Deep Neural Networks 
 

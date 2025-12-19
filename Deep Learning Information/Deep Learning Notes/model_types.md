@@ -3,13 +3,13 @@
 ### Supervised learning: 
 **<ins>Supervised learning</ins>**: Supervised learning models are a type of learning model that maps specific input values to output values. 
 
-<ins>Learning Mechanism</ins>: 
+#### Learning Mechanism: 
 
-    - A supervised learning model learns how to map specific input values to output values by using a training dataset with known relationships between input and output
+1. A supervised learning model learns how to map specific input values to output values by using a training dataset with known relationships between input and output
 
-    - The model makes its own predictions with the given input values and computes the loss function between its predicted output value and the actual output value
+2. The model makes its own predictions with the given input values and computes the loss function between its predicted output value and the actual output value
 
-    - The model then updates its parameters to minimize the loss function, allowing the model to better fit the known relationship
+3. The model then updates its parameters to minimize the loss function, allowing the model to better fit the known relationship
 
 <ins>Example</ins>: A model that predicts house prices given properties about the house 
 
@@ -20,15 +20,15 @@
 ### Unsupervised Learning
 **<ins>Unsupervised model</ins>**: Unsupervised learning models are a type of learning model that learns to find specific patterns in input data
 
-<ins>Learning Mechanism</ins>:  
+#### Learning Mechanism:  
 
-    - Unsupervised learning models learn how to find patterns in input data through loss functions, where each unsupervised learning model is unique due to their internal loss function.
+1. Unsupervised learning models learn how to find patterns in input data through loss functions, where each unsupervised learning model is unique due to their internal loss function.
 
-    - The within-cluster sum of squares is an example of a loss function that certain types of unsupervised learning models use
+2. The within-cluster sum of squares is an example of a loss function that certain types of unsupervised learning models use
 
-    - This loss function measures how close each data point is to the cluster. 
+3. This loss function measures how close each data point is to the cluster. 
 
-    - The parameters are updated to move the cluster closer to its neighboring data points
+4. The parameters are updated to move the cluster closer to its neighboring data points
 
 <ins>Example</ins>: Grouping pixels that illustrate the same object  
 
@@ -39,13 +39,13 @@
 ### Reinforcement Learning
 **<ins>Reinforcement Learning</ins>**: Reinforcement learning models are a type of learning model that learns decision-making strategies in a given environment  
 
-<ins>Learning Mechanism</ins>: 
+#### Learning Mechanism: 
 
-    - Reinforcement learning models are given a set of actions, which are randomly chosen at first 
+1. Reinforcement learning models are given a set of actions, which are randomly chosen at first 
 
-    - The model either receives a reward or a punishment based on its actions 
+2. The model either receives a reward or a punishment based on its actions 
 
-    - Based on the output from its actions, the model updates its policy (learned action plan) to optimize its rewards
+3. Based on the output from its actions, the model updates its policy (learned action plan) to optimize its rewards
 
 <ins>Example</ins>: A model that learns how to play chess 
 

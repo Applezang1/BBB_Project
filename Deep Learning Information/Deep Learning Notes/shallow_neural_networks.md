@@ -25,43 +25,43 @@
 **<ins>Bias</ins>**: the parameter that offsets the entire output function in the end
 
 ## Shallow Neural Network: 
-**<ins>General equation for a shallow neural network</ins>**: y[j] = phi[j0] + summation from d = 1 to D of phi[jd]*h[d] 
+**<ins>General equation for a shallow neural network</ins>**: y[j] = phi[j0] + summation from d = 1 to D of phi[jd]*h[d]
+
 <ins>Variables</ins>: 
 
-    - phi[j0] is the parameter that offsets the entire function
+- phi[j0] is the parameter that offsets the entire function
 
-    - phi[jd] is the weight of each hidden unit of the function (determines how much of an impact the hidden layer has on the output)
+- phi[jd] is the weight of each hidden unit of the function (determines how much of an impact the hidden layer has on the output)
 
 **<ins>Hidden unit equation</ins>**: h = a*[phi[d0] + summation from i = 1 to D[i] of phi[di]*x[i] ]
+
 <ins>Variables</ins>: 
 
-    - a = activation function
+- a = activation function
     
-    - d = number of hidden units
+- d = number of hidden units
     
-    - x, y = multi-dimensional inputs/outputs
+- x, y = multi-dimensional inputs/outputs
 
 ## Shallow Neural Network Example: 
-A function in terms of x and 10 parameters: y = phi[0] + phi[1]*a*(phi[10] + phi[11x]) + phi[2]*a*(phi[20] + phi[21]x) + phi[3]*a*(phi[30] + phi[31]x)
+A function in terms of x and 10 parameters: y = phi[0] + phi[1]*a*(phi[10] + phi[11x]) + phi[2]* a*(phi[20] + phi[21]x) + phi[3]*a*(phi[30] + phi[31]x)
 
 <ins>Variables</ins>: 
 
-    - phi: the parameters
+- phi: the parameters
     
-    - a: the activation function
+- a: the activation function
 
 ## General Method for Shallow Neural Network:
-The linear function of the input data is computed 
+1. The linear function of the input data is computed 
 
-    - Note: A linear function of the input data is a function with an input variable (Example: phi[20] + phi[21]x)
+<ins>Note</ins>: A linear function of the input data is a function with an input variable (Example: phi[20] + phi[21]x)
 
-The value of the linear function is passed through an activation function (a)
+2. The value of the linear function is passed through an activation function (a)
 
-<ins>Example</ins>: 
+<ins>Example</ins>: ReLU (rectified linear unit) is a function that returns the value when the input is positive and returns a zero in any other scenario
 
-    - ReLU (rectified linear unit): a function that returns the value when the input is positive and returns a zero in any other scenario
-
-The value of the activation function is offsetted by a parameter (phi[0])
+3. The value of the activation function is offsetted by a parameter (phi[0])
 
 We can optimize the value of the parameters to minimize the least squares loss function between the input/output data pair and the predicted value to train the model
 
@@ -70,18 +70,19 @@ We can optimize the value of the parameters to minimize the least squares loss f
 
 In the linear function mentioned above, the hidden units h1, h2, and h3 are 
 
-    - h1 = a*(phi[10] + phi[11]x)
+- h1 = a*(phi[10] + phi[11]x)
 
-    - h2 = a*(phi[20] + phi[21]x)
+- h2 = a*(phi[20] + phi[21]x)
 
-    - h3 = a*(phi[30] + phi[31]x) 
+- h3 = a*(phi[30] + phi[31]x) 
 
-Simplified Equation: y = phi[0] + phi[1]*h1 + phi[2]*h2 + phi[3]*h3 
+<ins>Simplified Equation</ins>: y = phi[0] + phi[1]*h1 + phi[2]*h2 + phi[3]*h3 
+
 ### Classification of Hidden Units:
 
-    - Active: A hidden layer contributes to the output 
+Active: A hidden layer contributes to the output 
 
-    - Inactive: A hidden layer doesn’t contribute to the output 
+Inactive: A hidden layer doesn’t contribute to the output 
 
 ## Universal Approximation Theorem 
 
@@ -90,9 +91,9 @@ Simplified Equation: y = phi[0] + phi[1]*h1 + phi[2]*h2 + phi[3]*h3
 ## Shallow Neural Network for Multivariate Inputs/Outputs: 
 <ins>Two Scenarios</ins>: 
 
-    - #1: A function has a multivariate (more than one) output 
+1. A function has a multivariate (more than one) output 
 
-    - #2: A function has a multivariate input and a multivariate output
+2. A function has a multivariate input and a multivariate output
 
 In either of these scenarios, each hidden layer returns a piecewise linear function that contributes to the shape of the continuous piecewise linear function of the input (output function)  
 

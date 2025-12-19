@@ -7,9 +7,9 @@
 
 **<ins>Curse of Dimensionality</ins>**: A case where a model with high dimensions overwhelms the number of training data points, leaving lots of gaps between training points
 
-To measure the performance of a neural network model, we need a test set of input/output pairs. Using the input of the test set, we compute the output using the neural network model and compare the predicted output to the actual output using the loss function to determine the accuracy of the model 
-
 ## Possible Sources of Error: 
+To measure the performance of a neural network model, we need a test set of input/output pairs. Using the input of the test set, we compute the output using the neural network model and compare the predicted output to the actual output using the loss function to determine the accuracy of the model  
+
 There are three possible sources of error behind why a neural network model might not fit well to the test set, these sources of error are: 
 
 ### Noise
@@ -17,9 +17,9 @@ There are three possible sources of error behind why a neural network model migh
 
 Reasoning behind the presence of Noise:  
 
-    - The data generation process might be innately random (example: growing two different plants, even though you give the same sunlight and water one might be taller than the other due to genetic factors, can’t control)
+- The data generation process might be innately random (example: growing two different plants, even though you give the same sunlight and water one might be taller than the other due to genetic factors, can’t control)
 
-    - Some of the data is mislabeled 
+- Some of the data is mislabeled 
 
 ### Bias
 **<ins>Bias</ins>**: Bias is when a model isn’t flexible enough to model the true function correctly. For example, it is impossible to accurately model a parabola with a linear graph. 
@@ -41,15 +41,15 @@ In order to reduce the error of the model, the three possible sources of error m
 
 However, there is a phenomenon named <ins>double descent</ins> where increasing the capacity of the model causes a decrease in the loss until the model has reached its bias-variance trade off point, where the loss then starts to increase. However after increasing the capacity, the loss of the model decreases again even though the variance continues to increase 
 
-    - Classical/under-parameterized regime: The graphical location of the first decrease in the loss (first descent)
+- <ins>Classical/under-parameterized regime</ins>: The graphical location of the first decrease in the loss (first descent)
 
-    - Modern/over-parameterized regime: The graphical location of the second decrease in the loss (second descent)
+- <ins>Modern/over-parameterized regime</ins>: The graphical location of the second decrease in the loss (second descent)
 
-    - Critical regime: The graphical location where the loss of the model beings to increase, after the model has passed its bias-variance trade off point 
+- <ins>Critical regime</ins>: The graphical location where the loss of the model beings to increase, after the model has passed its bias-variance trade off point 
 
 ## Determining Hyperparameters 
 In a deep learning model, the capacity of the neural network model depends on the number of hidden layers and hidden units. These two factors are called <ins>hyperparameters</ins>
 
-**<ins>Hyperparameter Search</ins>**: Hyperparameter search involves finding the best hyperparameters that give the lowest loss for a neural network model 
+**<ins>Hyperparameter Search</ins>**: Hyperparameter search involves finding the best hyperparameters that give the lowest loss for a neural network model. 
 
-    - Method: A hyperparameter search is usually done through training a variety of models with different hyperparameters using a validation set and finding the combination of hyperparameters that resulted in the lowest loss 
+A hyperparameter search is usually done through training a variety of models with different hyperparameters using a validation set and finding the combination of hyperparameters that resulted in the lowest loss 
